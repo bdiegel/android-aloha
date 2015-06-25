@@ -5,7 +5,7 @@ A library for adding a simple welcome activity to your Android app.
 Specify resource identifiers to customize each welcome page:
 
 | Description           | View      | Resource Id                |
-| :-------------------- |:--------- :----------------------------|
+| :-------------------- |:--------- |----------------------------|
 | **image**             | ImageView | R.drawable.your_image      |
 | **header**            | TextView  | R.string.your_page_header  |
 | **content**           | TextView  | R.string.your_page_content |
