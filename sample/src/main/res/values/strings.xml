@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Aloha</string>
+
+    <string name="aloha">Aloha!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Welcome page headers -->
+    <string name="welcome_header_0">Page 0</string>
+    <string name="welcome_header_1">Page 1</string>
+    <string name="welcome_header_2">Page 2</string>
+
+    <!-- Welcome page text content -->
+    <string name="welcome_content_0">Content of page 0</string>
+    <string name="welcome_content_1">Content of page 1</string>
+    <string name="welcome_content_2">Content of page 2</string>
+
+</resources>

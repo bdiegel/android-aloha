@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/welcome_fragment"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clipChildren="false"
+    android:background="#0F9D58" >
+
+    <FrameLayout
+        android:id="@+id/images"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:clipChildren="false">
+        
+        <ImageView 
+            android:id="@+id/welcome_page_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:layout_marginTop="48dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/welcome_page_heading"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/images"
+        android:layout_alignLeft="@id/images"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:text="@string/sample_heading"
+        android:textAppearance="@style/HeaderText" />
+
+    <TextView
+        android:id="@+id/welcome_page_content"
+        android:text="@string/sample_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/images"
+        android:layout_below="@+id/welcome_page_heading"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginRight="48dp"
+        android:minHeight="96dp"
+        android:textAppearance="@style/ContentText" />
+
+</RelativeLayout>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Aloha</string>
+    <string name="sample_heading">Short sample heading</string>
+    <string name="sample_content">Content is for describing some useful feature about your app</string>
+</resources>
