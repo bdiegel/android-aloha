@@ -11,19 +11,17 @@ Specify resource identifiers to customize each welcome page:
 | **content**           | TextView  | R.string.your_page_content |
 | **background color**  | Layout    | R.color.your_page_color    |
 
-
-The `versionCode` of the client app is stored in a SharedPreference to help determine if the welcome should be displayed.
-
 Sample App
 ----------
 
 For a working implementation see the application in the `sample/` folder.
 
+
 Usage
 -----
 
-  1. Prepare your resources for each welcome page: image, header, content, and background color
-  2. Create a WelcomeActivity that extends [BaseWelcomeActivity](https://github.com/bdiegel/android-aloha/blob/master/aloha/src/main/java/com/honu/aloha/BaseWelcomeActivity.java)
+  1. Prepare your resources for each welcome page: image, header, content, and background color.
+  2. Create a WelcomeActivity that extends [BaseWelcomeActivity](https://github.com/bdiegel/android-aloha/blob/master/aloha/src/main/java/com/honu/aloha/BaseWelcomeActivity.java).
   3. Implement createPages() in WelcomeActivity:
 
         @Override
@@ -44,12 +42,22 @@ Usage
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
 
+About
+-----
+
+The `versionCode` of the client app can be used to show the welcome activity on app install or upgrade.
+WelcomeHelper.isWelcomeRequired(this) compares versions and updates a SharedPreference when 'true'.
+
+The PageTansformer provides a cross-fading transition between page slides of the view pager. The text slides with the
+page and gradually fades out. The image and background color also fade out as the new page increases in opacity. When
+you scroll off the last welcome page, the main activity is revealed.
+
 Recommendations
 ---------------
 
 Follow these suggestions for the best results:
 
-  * Use reasonably sized image resources: try 400x400
+  * Use reasonably sized image resources (try 400x400).
   * The default (and currently only) theme is light on dark. Choose appropriate colors.
   * Use Toolbar in your MainActivity layout and disable the window title in the style:
 
