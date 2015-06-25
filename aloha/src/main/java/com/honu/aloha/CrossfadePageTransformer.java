@@ -6,7 +6,7 @@ import android.view.View;
 /**
  * Provides a cross-fading transition between page slides of the view pager.
  *
- * 1. The header and content text slide from right to left with the page and gradually fade out.
+ * 1. The header and content text slides with the page and gradually fades out.
  * 2. The page image and background color also fade out as the next page increases in opacity.
  * 3. When you scroll off the last welcome page, the main activity is revealed.
  */
@@ -15,7 +15,7 @@ public class CrossfadePageTransformer implements ViewPager.PageTransformer {
     @Override
     public void transformPage(View page, float position) {
 
-        if (position == 0.0f || position <= -1.0f || position >= 1.0f) {
+        if (position <= -1.0f || position >= 1.0f) {
             return;
         }
 
@@ -25,6 +25,7 @@ public class CrossfadePageTransformer implements ViewPager.PageTransformer {
 
         int pageWidth = page.getWidth();
         page.setTranslationX(pageWidth * -position);
+
 
         if (fragmentView != null) {
             fragmentView.setAlpha(1.0f - Math.abs(position));
