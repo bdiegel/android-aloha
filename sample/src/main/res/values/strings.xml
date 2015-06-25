@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Aloha</string>
+    <string name="title">MainActivity</string>
 
     <string name="aloha">Aloha!</string>
     <string name="action_settings">Settings</string>

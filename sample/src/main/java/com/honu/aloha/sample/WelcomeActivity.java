@@ -1,7 +1,6 @@
 package com.honu.aloha.sample;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.honu.aloha.BaseWelcomeActivity;
 import com.honu.aloha.PageDescriptor;
@@ -14,12 +13,6 @@ public class WelcomeActivity extends BaseWelcomeActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // prevents the toolbar from the main Activity below from showing through (note: API 19 specific)
-//        Window window = getWindow();
-//        window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-        Log.d(LOG_TAG, "onCreate with savedInstanceState=" + savedInstanceState);
     }
 
     @Override
