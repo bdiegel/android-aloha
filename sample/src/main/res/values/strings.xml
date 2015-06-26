@@ -1,17 +1,23 @@
 <resources>
-    <string name="title">MainActivity</string>
 
-    <string name="aloha">Aloha!</string>
+    <!-- Application -->
+    <string name="app_name">Aloha</string>
+
+    <!-- MainActivity -->
+    <string name="main_title">MainActivity</string>
+    <string name="text_content">Aloha!</string>
+    <string name="text_github">Source code available on <a href="https://github.com/bdiegel/android-aloha">GitHub</a></string>
+
+    <!-- Menu -->
     <string name="action_settings">Settings</string>
 
     <!-- Welcome page headers -->
-    <string name="welcome_header_0">Page 0</string>
-    <string name="welcome_header_1">Page 1</string>
-    <string name="welcome_header_2">Page 2</string>
+    <string name="welcome_header_0">Aloha sample application</string>
+    <string name="welcome_header_1">Aloha is customizable</string>
+    <string name="welcome_header_2">Aloha is easy to use</string>
 
     <!-- Welcome page text content -->
-    <string name="welcome_content_0">Content of page 0</string>
-    <string name="welcome_content_1">Content of page 1</string>
-    <string name="welcome_content_2">Content of page 2</string>
-
+    <string name="welcome_content_0">Aloha is a reusable library for adding a simple welcome activity to your Android application.</string>
+    <string name="welcome_content_1">You define resource identifiers to provide the text, image and background color of each page.</string>
+    <string name="welcome_content_2">Simply extend the base welcome activity and provide resources for each page.</string>
 </resources>
