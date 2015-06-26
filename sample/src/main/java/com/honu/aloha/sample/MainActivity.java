@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.honu.aloha.WelcomeHelper;
 
@@ -23,8 +25,12 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
+            getSupportActionBar().setTitle(R.string.main_title);
             getSupportActionBar().setDisplayShowTitleEnabled(true);
         }
+
+        TextView url = (TextView) findViewById(R.id.github_url);
+        url.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     private void maybeShowWelcomeActivity() {
