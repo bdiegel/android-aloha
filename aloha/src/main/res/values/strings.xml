@@ -2,4 +2,5 @@
     <string name="app_name">Aloha</string>
     <string name="sample_heading">Short sample heading</string>
     <string name="sample_content">Content is for describing some useful feature about your app</string>
+    <string name="welcome_page_image">Welcome page image</string>
 </resources>

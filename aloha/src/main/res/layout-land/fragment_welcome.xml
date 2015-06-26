@@ -2,28 +2,29 @@
 
 <LinearLayout android:id="@+id/welcome_fragment"
               xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
               android:layout_gravity="left"
               android:gravity="center_vertical"
               android:orientation="horizontal"
+              android:background="#0F9D58"
               android:padding="16dp">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="2"
         android:layout_gravity="top"
-        android:layout_weight="1"
         android:clipChildren="false"
         android:orientation="vertical"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="16dp"
         android:paddingTop="8dp">
 
         <TextView
             android:id="@+id/welcome_page_heading"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
             android:layout_marginTop="32dp"
             android:text="@string/sample_heading"
             android:textAppearance="@style/HeaderText"/>
@@ -32,8 +33,6 @@
             android:id="@+id/welcome_page_content"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
             android:layout_marginTop="8dp"
             android:minHeight="96dp"
             android:text="@string/sample_content"
@@ -43,22 +42,21 @@
 
     <FrameLayout
         android:id="@+id/images"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="3"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:clipChildren="false">
 
         <ImageView
             android:id="@+id/welcome_page_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_marginLeft="32dp"
-            android:layout_marginRight="32dp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center"
             android:layout_marginTop="0dp"
-            android:scaleType="centerInside"/>
-        <!--android:src="@drawable/test"-->
+            android:src="@drawable/test"
+            android:scaleType="centerInside"
+            android:contentDescription="@string/welcome_page_image"/>
 
     </FrameLayout>
 
