@@ -57,8 +57,9 @@ Recommendations
 
 Follow these suggestions for the best results:
 
-  * Use reasonably sized image resources (try 400x400).
-  * The default (and currently only) theme is light on dark. Choose appropriate colors.
+  * Use reasonably sized image resources. The layouts use `centerInside` for the ImageView scale type. This means
+    your image will scale down only if necessary and never be scaled up. A 400x400 image works well with most devices.
+  * When selecting background colors keep in mind that the default theme is light on dark.
   * Use Toolbar in your MainActivity layout and disable the window title in the style:
 
         <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
@@ -68,4 +69,9 @@ Follow these suggestions for the best results:
 
 Acknowledgments
 ---------------
+The sample application uses images under CC0 license.
+
+License
+-------
+License information [LICENSE](LICENSE.txt)
 
