@@ -24,7 +24,7 @@ android {
     }
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
-            def fileName = archivesBaseName + "-" + variant.buildType.name + "-v" + defaultConfig.versionName + ".apk";
+            def fileName = "aloha_" + archivesBaseName + "-" + variant.buildType.name + "-v" + defaultConfig.versionName + ".apk";
             output.outputFile = new File(output.outputFile.parent, fileName)
         }
     }
