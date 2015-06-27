@@ -2,6 +2,12 @@ Aloha
 =====
 A library for adding a simple welcome activity to your Android app.
 
+<img src='sample/res/prod/screenshots/nexus5/welcome_page_0.png' width=175/>
+<img src='sample/res/prod/screenshots/nexus5/welcome_page_1.png' width=175/>
+<img src='sample/res/prod/screenshots/nexus5/welcome_page_2.png' width=175/>
+<img src='sample/res/prod/screenshots/nexus5/main_activity.png' width=175/>
+
+
 Specify resource identifiers to customize each welcome page:
 
 | Description           | View      | Resource Id  (yours)       |
@@ -10,6 +16,7 @@ Specify resource identifiers to customize each welcome page:
 | **header**            | TextView  | R.string.your_page_header  |
 | **content**           | TextView  | R.string.your_page_content |
 | **background color**  | Layout    | R.color.your_page_color    |
+
 
 Sample App
 ----------
