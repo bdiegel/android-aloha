@@ -4,7 +4,7 @@ A library for adding a simple welcome activity to your Android app.
 
 Specify resource identifiers to customize each welcome page:
 
-| Description           | View      | Resource Id                |
+| Description           | View      | Resource Id  (yours)       |
 | :-------------------- |:--------- |----------------------------|
 | **image**             | ImageView | R.drawable.your_image      |
 | **header**            | TextView  | R.string.your_page_header  |
@@ -46,11 +46,14 @@ About
 -----
 
 The `versionCode` of the client app can be used to show the welcome activity on app install or upgrade.
-WelcomeHelper.isWelcomeRequired(this) compares versions and updates a SharedPreference when 'true'.
+Use WelcomeHelper.isWelcomeRequired(this) to compare versions and update a SharedPreference when 'true'.
 
 The PageTansformer provides a cross-fading transition between page slides of the view pager. The text slides with the
 page and gradually fades out. The image and background color also fade out as the new page increases in opacity. When
 you scroll off the last welcome page, the main activity is revealed.
+
+During development, WelcomeHelper.clearLastRunVersionCode(this) can be used to clear the SharedPreference and force
+the WelcomeActivity to show each time you run your app.
 
 Recommendations
 ---------------
