@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
             getSupportActionBar().setTitle(R.string.main_title);
             getSupportActionBar().setDisplayShowTitleEnabled(true);
+            toolbar.setNavigationIcon(R.mipmap.ic_launcher);
         }
 
         TextView url = (TextView) findViewById(R.id.github_url);
@@ -54,10 +55,15 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_info:
+                startActivity(new Intent(this, InfoActivity.class));
+                return true;
+            case R.id.action_welcome:
+                maybeShowWelcomeActivity();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 }
