@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -68,6 +69,7 @@ public class InfoActivity extends AppCompatActivity {
         alert.setTitle("License information");
 
         TextView tv = new TextView(this);
+        tv.setMovementMethod(new ScrollingMovementMethod());
         tv.setText(Html.fromHtml(getString(R.string.isc_license)));
         tv.setPadding(16, 12, 16, 0);
         alert.setView(tv);
