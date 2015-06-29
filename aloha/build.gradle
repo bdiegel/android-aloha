@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
 
 def versionMajor = 0
 def versionMinor = 9
@@ -31,7 +33,97 @@ android {
     }
 }
 
+// GitHub
+def github = [
+    user: 'bdiegel',
+    name: 'Betty Diegel',
+    email: 'bdiegel@gmail.com',
+    url: 'https://github.com/bdiegel/android-aloha',
+    git: 'https://github.com/bdiegel/android-aloha.git'
+]
+
+// Bintray user info from local properties
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+// Bintray package version
+version =  "${versionMajor}.${versionMinor}.${versionPatch}"
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+
+    configurations = ['archives']
+    pkg {
+        repo = 'maven'
+        name = 'com.honu.aloha'
+        desc = 'Library to add simple welcome activity to your Android app'
+        websiteUrl = github.url
+        issueTrackerUrl = github.url + '/issues'
+        vcsUrl = github.git
+        licenses = ['ISC']
+        labels = ['aar', 'android', 'library', 'welcome']
+        publicDownloadNumbers = false
+    }
+}
+
+// Maven groupId
+group = 'honuapps'
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                name 'com.honu.aloha'
+                url github.url
+                licenses {
+                    license {
+                        name 'ISC'
+                        url 'http://opensource.org/licenses/ISC'
+                    }
+                }
+                developers {
+                    developer {
+                        id github.user
+                        name github.name
+                        email github.email
+                    }
+                }
+                scm {
+                    connection github.git
+                    developerConnection github.git
+                    url github.url
+                }
+            }
+        }
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.2.0'
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+task findConventions << {
+    println project.getConvention()
 }
