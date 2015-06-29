@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Aloha by bdiegel</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Aloha</h1>
+        <p>The simple way to add a welcome activity to your Android app</p>
+        <p class="view"><a href="https://github.com/bdiegel/android-aloha">View the Project on GitHub <small>bdiegel/android-aloha</small></a></p>
+        <ul>
+          <li><a href="https://github.com/bdiegel/android-aloha/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/bdiegel/android-aloha/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/bdiegel/android-aloha">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="aloha" class="anchor" href="#aloha" aria-hidden="true"><span class="octicon octicon-link"></span></a>Aloha</h1>
+
+<p>Aloha is an Android library for adding a simple welcome activity to your app.</p>
+
+<p><img src="https://github.com/bdiegel/android-aloha/blob/master/sample/res/prod/screenshots/nexus5/welcome_page_0.png" width="175/">
+<img src="https://github.com/bdiegel/android-aloha/blob/master/sample/res/prod/screenshots/nexus5/welcome_page_1.png" width="175/">
+<img src="https://github.com/bdiegel/android-aloha/blob/master/sample/res/prod/screenshots/nexus5/welcome_page_2.png" width="175/">
+<img src="https://github.com/bdiegel/android-aloha/blob/master/sample/res/prod/screenshots/nexus5/main_activity.png" width="175/"></p>
+
+<p>Specify resource identifiers to customize each welcome page:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Description</th>
+<th align="left">View</th>
+<th>Resource Id  (yours)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>image</strong></td>
+<td align="left">ImageView</td>
+<td>R.drawable.your_image</td>
+</tr>
+<tr>
+<td align="left"><strong>header</strong></td>
+<td align="left">TextView</td>
+<td>R.string.your_page_header</td>
+</tr>
+<tr>
+<td align="left"><strong>content</strong></td>
+<td align="left">TextView</td>
+<td>R.string.your_page_content</td>
+</tr>
+<tr>
+<td align="left"><strong>background color</strong></td>
+<td align="left">Layout</td>
+<td>R.color.your_page_color</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="sample-app" class="anchor" href="#sample-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sample App</h2>
+
+<p>For a working implementation see the application in the <code>sample/</code> folder.</p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<ol>
+<li>Prepare your resources for each welcome page: image, header, content, and background color.</li>
+<li>Create a WelcomeActivity that extends <a href="https://github.com/bdiegel/android-aloha/blob/master/aloha/src/main/java/com/honu/aloha/BaseWelcomeActivity.java">BaseWelcomeActivity</a>.</li>
+<li>
+<p>Implement createPages() in WelcomeActivity:</p>
+
+<pre><code>@Override
+public void createPages() {
+  addPage(new PageDescriptor(R.string.welcome_header_0, R.string.welcome_content_0, R.drawable.welcome_image_0, R.color.welcome_color_0));
+  addPage(new PageDescriptor(R.string.welcome_header_1, R.string.welcome_content_1, R.drawable.welcome_image_1, R.color.welcome_color_1));
+  addPage(new PageDescriptor(R.string.welcome_header_2, R.string.welcome_content_2, R.drawable.welcome_image_2, R.color.welcome_color_2));
+}
+</code></pre>
+</li>
+<li>
+<p>Declare your WelcomeActivity in AndroidManifest.xml:</p>
+
+<pre><code>&lt;activity android:name=".WelcomeActivity" /&gt;
+</code></pre>
+</li>
+<li>
+<p>Modify your MainActivity to start the WelcomeActivity:</p>
+
+<pre><code>if (WelcomeHelper.isWelcomeRequired(this)) {
+    startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
+    overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+}
+</code></pre>
+</li>
+</ol>
+
+<h2>
+<a id="about" class="anchor" href="#about" aria-hidden="true"><span class="octicon octicon-link"></span></a>About</h2>
+
+<p>The <code>versionCode</code> of the client app can be used to show the welcome activity on app install or upgrade.
+Use WelcomeHelper.isWelcomeRequired(this) to compare versions and update a SharedPreference when 'true'.</p>
+
+<p>The PageTansformer provides a cross-fading transition between page slides of the view pager. The text slides with the
+page and gradually fades out. The image and background color also fade out as the new page increases in opacity. When
+you scroll off the last welcome page, the main activity is revealed.</p>
+
+<p>During development, WelcomeHelper.clearLastRunVersionCode(this) can be used to clear the SharedPreference and force
+the WelcomeActivity to show each time you run your app.</p>
+
+<h2>
+<a id="recommendations" class="anchor" href="#recommendations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Recommendations</h2>
+
+<p>Follow these suggestions for the best results:</p>
+
+<ul>
+<li>Use reasonably sized image resources. The layouts use <code>centerInside</code> for the ImageView scale type. This means
+your image will scale down only if necessary and never be scaled up. A 400x400 image works well with most devices.</li>
+<li>When selecting background colors keep in mind that the default theme is light on dark.</li>
+<li>
+<p>Use Toolbar in your MainActivity layout and disable the window title in the style:</p>
+
+<pre><code>&lt;style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar"&gt;
+    &lt;item name="android:windowNoTitle"&gt;true&lt;/item&gt;
+&lt;/style&gt;
+</code></pre>
+</li>
+</ul>
+
+<h2>
+<a id="acknowledgments" class="anchor" href="#acknowledgments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Acknowledgments</h2>
+
+<p>The sample application uses images under CC0 license.</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>License information <a href="LICENSE.txt">LICENSE</a></p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/bdiegel">bdiegel</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
