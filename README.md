@@ -2,10 +2,10 @@ Aloha
 =====
 A library for adding a simple welcome activity to your Android app.
 
-<img src='sample/res/prod/screenshots/nexus5/welcome_page_0.png' width=175/>
-<img src='sample/res/prod/screenshots/nexus5/welcome_page_1.png' width=175/>
-<img src='sample/res/prod/screenshots/nexus5/welcome_page_2.png' width=175/>
-<img src='sample/res/prod/screenshots/nexus5/main_activity.png' width=175/>
+<img src='https://raw.githubusercontent.com/bdiegel/android-aloha-sample/master/res/prod/screenshots/nexus5/welcome_page_0.png' width=175/>
+<img src='https://raw.githubusercontent.com/bdiegel/android-aloha-sample/master/res/prod/screenshots/nexus5/welcome_page_1.png' width=175/>
+<img src='https://raw.githubusercontent.com/bdiegel/android-aloha-sample/master/res/prod/screenshots/nexus5/welcome_page_2.png' width=175/>
+<img src='https://raw.githubusercontent.com/bdiegel/android-aloha-sample/master/res/prod/screenshots/nexus5/main_activity.png' width=175/>
 
 
 Specify resource identifiers to customize each welcome page:
@@ -17,19 +17,31 @@ Specify resource identifiers to customize each welcome page:
 | **content**           | TextView  | R.string.your_page_content |
 | **background color**  | Layout    | R.color.your_page_color    |
 
+Documentation
+-------------
+See the [Aloha](http://bdiegel.github.io/android-aloha) project page for more details.
 
-Sample App
-----------
 
-For a working implementation see the application in the `sample/` folder.
+Sample Application
+------------------
+
+For a working implementation see the sample application project: [android-aloha-sample](https://github.com/bdiegel/android-aloha-sample).
+
+The sample application can also be installed from the Play Store.
 
 
 Usage
 -----
 
-  1. Prepare your resources for each welcome page: image, header, content, and background color.
-  2. Create a WelcomeActivity that extends [BaseWelcomeActivity](https://github.com/bdiegel/android-aloha/blob/master/aloha/src/main/java/com/honu/aloha/BaseWelcomeActivity.java).
-  3. Implement createPages() in WelcomeActivity:
+  1. The library is available on JCenter. Add the dependency to your build.gradle file:
+
+         dependencies {
+             compile 'honuapps:aloha:0.9.0'
+         }
+
+  2. Prepare your resources for each welcome page: image, header, content, and background color.
+  3. Create a WelcomeActivity that extends [BaseWelcomeActivity](https://github.com/bdiegel/android-aloha/blob/master/aloha/src/main/java/com/honu/aloha/BaseWelcomeActivity.java).
+  4. In your WelcomeActivity, implement createPages():
 
         @Override
         public void createPages() {
@@ -38,43 +50,16 @@ Usage
           addPage(new PageDescriptor(R.string.welcome_header_2, R.string.welcome_content_2, R.drawable.welcome_image_2, R.color.welcome_color_2));
         }
 
-  4. Declare your WelcomeActivity in AndroidManifest.xml:
+  5. Declare your WelcomeActivity in AndroidManifest.xml:
 
         <activity android:name=".WelcomeActivity" />
 
-  5. Modify your MainActivity to start the WelcomeActivity:
+  6. Modify your MainActivity to start the WelcomeActivity:
 
         if (WelcomeHelper.isWelcomeRequired(this)) {
             startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         }
-
-About
------
-
-The `versionCode` of the client app can be used to show the welcome activity on app install or upgrade.
-Use WelcomeHelper.isWelcomeRequired(this) to compare versions and update a SharedPreference when 'true'.
-
-The PageTansformer provides a cross-fading transition between page slides of the view pager. The text slides with the
-page and gradually fades out. The image and background color also fade out as the new page increases in opacity. When
-you scroll off the last welcome page, the main activity is revealed.
-
-During development, WelcomeHelper.clearLastRunVersionCode(this) can be used to clear the SharedPreference and force
-the WelcomeActivity to show each time you run your app.
-
-Recommendations
----------------
-
-Follow these suggestions for the best results:
-
-  * Use reasonably sized image resources. The layouts use `centerInside` for the ImageView scale type. This means
-    your image will scale down only if necessary and never be scaled up. A 400x400 image works well with most devices.
-  * When selecting background colors keep in mind that the default theme is light on dark.
-  * Use Toolbar in your MainActivity layout and disable the window title in the style:
-
-        <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
-            <item name="android:windowNoTitle">true</item>
-        </style>
 
 
 Acknowledgments
@@ -83,5 +68,5 @@ The sample application uses images under CC0 license.
 
 License
 -------
-License information [LICENSE](LICENSE.txt)
+ISC license information [LICENSE](LICENSE.txt)
 
