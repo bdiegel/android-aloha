@@ -1,1 +1,1 @@
-include ':sample', ':aloha'
+include ':aloha'
