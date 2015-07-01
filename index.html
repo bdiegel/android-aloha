@@ -46,27 +46,29 @@ You specify resource identifiers for each page and write a minimal amount of cod
 
 <h2>
 <a id="sample-app" class="anchor" href="#sample-app" aria-hidden="true"><span class="octicon octicon-link"></span></a>Sample application</h2>
-
-<p>For a working implementation see the sample application project: <a href="https://github.com/bdiegel/android-aloha-sample">android-aloha-sample</a> on GitHub.</p>
-
-<p>The sample application can also be installed from the Play Store (coming soon!)</p>
+<p>
+  <a href="https://play.google.com/store/apps/details?id=com.honu.aloha.sample">
+    <img alt="Get it on Google Play" src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" />
+  </a>
+</p>
+<p>Use the link above to install the demo from the Play Store. The <a href="https://github.com/bdiegel/android-aloha-sample">sample application</a> source is also available on GitHub.</p>
 
 <h2>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <ol>
 <li>
-<p>Aloha is available on JCenter. Add the dependency to your build.gradle file:</p>
+<p>The Aloha library is available on JCenter. Add the dependency to your build.gradle file:</p>
 
 <pre class="prettyprint lang-groovy"><code>dependencies {
-    compile 'honuapps:aloha:0.9.+'
+    compile 'honuapps:aloha:0.9.0'
 }
 </code></pre>
 </li>
-<li>Prepare your resources for each welcome page: image, header, content, and background color.</li>
+<li>Prepare your resources for each welcome page: <b>image</b>, <b>header</b>, <b>content</b>, and <b>background color</b>.</li>
 <li>Create a WelcomeActivity that extends <a href="https://github.com/bdiegel/android-aloha/blob/master/aloha/src/main/java/com/honu/aloha/BaseWelcomeActivity.java">BaseWelcomeActivity</a>.</li>
 <li>
-<p>Implement createPages() in WelcomeActivity:</p>
+<p>Implement createPages() in WelcomeActivity. Create a PageDesriptor for each page:</p>
 
 <pre class="prettyprint lang-java"><code>@Override
 public void createPages() {
@@ -131,7 +133,7 @@ public void createPages() {
 </table>
 
 <h2>
-<a id="welcome" class="anchor" href="#welcome" aria-hidden="true"><span class="octicon octicon-link"></span></a>Displaying WelcomeActivity</h2>
+<a id="welcome" class="anchor" href="#welcome" aria-hidden="true"><span class="octicon octicon-link"></span></a>WelcomeActivity</h2>
 
 <p>The <code>versionCode</code> of the client app can be used to show the welcome activity on app install or upgrade.
 Use this helper method to compare versions and update a SharedPreference when 'true'.</p>
@@ -139,7 +141,7 @@ Use this helper method to compare versions and update a SharedPreference when 't
 <pre class="prettyprint lang-java"><code>WelcomeHelper.isWelcomeRequired(this)</code></pre>
 
 <h2>
-<a id="page-transformer" class="anchor" href="#page-transformer" aria-hidden="true"><span class="octicon octicon-link"></span></a>View PageTransformer</h2>
+<a id="page-transformer" class="anchor" href="#page-transformer" aria-hidden="true"><span class="octicon octicon-link"></span></a>PageTransformer</h2>
 
 <p>The PageTansformer provides a cross-fading transition between page slides of the view pager. The text slides with the
 page and gradually fades out. The image and background color also fade out as the new page increases in opacity. When
